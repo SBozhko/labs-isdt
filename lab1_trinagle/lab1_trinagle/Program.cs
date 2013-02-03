@@ -9,6 +9,14 @@ namespace lab1_trinagle
     {
         static void Main(string[] args)
         {
+            Triangle triangle = new Triangle();
+            triangle.print();           
+            triangle.Resize(4, 4);
+            triangle.Rotate(60, Triangle.CLOCKWISE.TRUE);
+            triangle.Move(4, 3);
+            triangle.print();
+
+            Console.ReadKey();
         }
     }
 }
