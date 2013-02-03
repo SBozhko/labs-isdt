@@ -1,0 +1,4 @@
+D:\MVS2010\labs_ISDT\lab1_trinagle\lab1_trinagle\bin\Debug\lab1_trinagle.exe
+D:\MVS2010\labs_ISDT\lab1_trinagle\lab1_trinagle\bin\Debug\lab1_trinagle.pdb
+D:\MVS2010\labs_ISDT\lab1_trinagle\lab1_trinagle\obj\x86\Debug\lab1_trinagle.exe
+D:\MVS2010\labs_ISDT\lab1_trinagle\lab1_trinagle\obj\x86\Debug\lab1_trinagle.pdb
