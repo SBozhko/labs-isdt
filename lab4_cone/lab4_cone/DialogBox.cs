@@ -9,11 +9,16 @@ using System.Windows.Forms;
 
 namespace lab4_cone
 {
-    public partial class Form1 : Form
+    public partial class DialogBox : Form
     {
-        public Form1()
+        public DialogBox()
         {
             InitializeComponent();
         }
+
+        private void savePropertiesButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }        
     }
 }
