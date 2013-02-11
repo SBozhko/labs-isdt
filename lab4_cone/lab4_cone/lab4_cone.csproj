@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cone.cs" />
     <Compile Include="DialogBox.cs">
       <SubType>Form</SubType>
     </Compile>
