@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.conePropertiesGroupBox = new System.Windows.Forms.GroupBox();
-            this.DensityTextBox = new System.Windows.Forms.TextBox();
+            this.densityTextBox = new System.Windows.Forms.TextBox();
             this.heightTextBox = new System.Windows.Forms.TextBox();
             this.densityLabel = new System.Windows.Forms.Label();
             this.heightLabel = new System.Windows.Forms.Label();
@@ -44,7 +44,7 @@
             // 
             // conePropertiesGroupBox
             // 
-            this.conePropertiesGroupBox.Controls.Add(this.DensityTextBox);
+            this.conePropertiesGroupBox.Controls.Add(this.densityTextBox);
             this.conePropertiesGroupBox.Controls.Add(this.heightTextBox);
             this.conePropertiesGroupBox.Controls.Add(this.densityLabel);
             this.conePropertiesGroupBox.Controls.Add(this.heightLabel);
@@ -57,12 +57,12 @@
             this.conePropertiesGroupBox.TabStop = false;
             this.conePropertiesGroupBox.Text = "Cone properties";
             // 
-            // DensityTextBox
+            // densityTextBox
             // 
-            this.DensityTextBox.Location = new System.Drawing.Point(74, 88);
-            this.DensityTextBox.Name = "DensityTextBox";
-            this.DensityTextBox.Size = new System.Drawing.Size(100, 20);
-            this.DensityTextBox.TabIndex = 5;
+            this.densityTextBox.Location = new System.Drawing.Point(74, 88);
+            this.densityTextBox.Name = "densityTextBox";
+            this.densityTextBox.Size = new System.Drawing.Size(100, 20);
+            this.densityTextBox.TabIndex = 5;
             // 
             // heightTextBox
             // 
@@ -170,7 +170,7 @@
         private System.Windows.Forms.Label radiusLabel;
         private System.Windows.Forms.TextBox radiusTextBox;
         private System.Windows.Forms.Label densityLabel;
-        private System.Windows.Forms.TextBox DensityTextBox;
+        private System.Windows.Forms.TextBox densityTextBox;
         private System.Windows.Forms.TextBox heightTextBox;
         private System.Windows.Forms.Button savePropertiesButton;
     }

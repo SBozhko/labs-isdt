@@ -5,7 +5,7 @@ using System.Text;
 
 namespace lab4_cone
 {
-    class Cone
+    public class Cone
     {
         public double Radius { get; set; }
         public double Height { get; set; }

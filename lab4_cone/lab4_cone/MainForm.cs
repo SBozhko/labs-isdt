@@ -11,23 +11,27 @@ namespace lab4_cone
 {
     public partial class MainForm : Form
     {
+        private Cone Cone { set; get; }
+
         public MainForm()
         {
             InitializeComponent();
+            Cone = new Cone();
         }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        
+        private void exitMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void inputToolStripMenuItem_Click(object sender, EventArgs e)
+        private void inputMenuItem_Click(object sender, EventArgs e)
         {
             DialogBox dialogBox = new DialogBox();
+            dialogBox.Cone = this.Cone;
             dialogBox.Show();
         }
 
-        private void workToolStripMenuItem_Click(object sender, EventArgs e)
+        private void workMenuItem_Click(object sender, EventArgs e)
         {
 
         }
