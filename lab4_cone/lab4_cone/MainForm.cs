@@ -11,34 +11,17 @@ namespace lab4_cone
 {
     public partial class MainForm : Form
     {
-        private Cone cone;
-        public Cone Cone
-        {
-            set { this.cone = value; }
-            get { return this.cone; }
-        }
-
-        private DialogBox dialogBox;
-        public DialogBox DialogBox
-        {
-            set { this.dialogBox = value; }
-            get { return this.dialogBox; }
-        }
-
-        private ResultForm resultForm;
-        public ResultForm ResultForm
-        {
-            set { this.resultForm = value; }
-            get { return this.resultForm; }
-        }       
+        public Cone Cone { set; get; }
+        public DialogBox DialogBox { set; get; }
+        public ResultForm ResultForm { set; get; }
 
         public MainForm()
         {
             InitializeComponent();
-            
-            cone = new Cone();
-            dialogBox = new DialogBox();            
-            dialogBox.Cone = this.Cone;            
+
+            this.Cone = new Cone();
+            this.DialogBox = new DialogBox();
+            this.DialogBox.Cone = this.Cone;            
         }
         
         private void exitMenuItem_Click(object sender, EventArgs e)
@@ -48,17 +31,17 @@ namespace lab4_cone
 
         private void inputMenuItem_Click(object sender, EventArgs e)
         {           
-            dialogBox.Show();
+            this.DialogBox.Show();
         }
 
         private void workMenuItem_Click(object sender, EventArgs e)
         {
-            this.resultForm = new ResultForm();
-            this.resultForm.Cone = this.dialogBox.Cone;
-            this.resultForm.RenderMass = this.dialogBox.CalcMass;
-            this.resultForm.RenderVolume = this.dialogBox.CalcVolume;
-            this.resultForm.ShowResults();
-            this.resultForm.Show();
+            this.ResultForm = new ResultForm();
+            this.ResultForm.Cone = this.DialogBox.Cone;
+            this.ResultForm.RenderMass = this.DialogBox.CalcMass;
+            this.ResultForm.RenderVolume = this.DialogBox.CalcVolume;
+            this.ResultForm.ShowResults();
+            this.ResultForm.Show();
         }
     }
 }

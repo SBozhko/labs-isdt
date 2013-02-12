@@ -11,26 +11,9 @@ namespace lab4_cone
 {
     public partial class DialogBox : Form
     {
-        private Cone cone;
-        public Cone Cone
-        {
-            set { this.cone = value; }
-            get { return this.cone; }
-        }
-
-        private bool calcVolume;
-        public bool CalcVolume
-        { 
-            set { this.calcVolume = value; }
-            get { return this.calcVolume; }
-        }
-
-        private bool calcMass;
-        public bool CalcMass
-        {
-            set { this.calcMass = value; }
-            get { return this.calcMass; }
-        }        
+        public Cone Cone { set; get; }        
+        public bool CalcVolume { set; get; }
+        public bool CalcMass { set; get; }
 
         public DialogBox()
         {
@@ -39,12 +22,12 @@ namespace lab4_cone
 
         private void savePropertiesButton_Click(object sender, EventArgs e)
         {
-            cone.Radius = Double.Parse(this.radiusTextBox.Text);
-            cone.Height = Double.Parse(this.heightTextBox.Text);
-            cone.Density = Double.Parse(this.densityTextBox.Text);
+            Cone.Radius = Double.Parse(this.radiusTextBox.Text);
+            Cone.Height = Double.Parse(this.heightTextBox.Text);
+            Cone.Density = Double.Parse(this.densityTextBox.Text);
 
-            calcVolume = this.volumeCheckBox.Checked;
-            calcMass = this.massCheckBox.Checked;
+            CalcVolume = this.volumeCheckBox.Checked;
+            CalcMass = this.massCheckBox.Checked;
 
             this.Hide();
         }        
