@@ -19,9 +19,7 @@ namespace lab4_cone
         {
             InitializeComponent();
 
-            this.Cone = new Cone();
-            this.DialogBox = new DialogBox();
-            this.DialogBox.Cone = this.Cone;            
+            this.Cone = new Cone();                       
         }
         
         private void exitMenuItem_Click(object sender, EventArgs e)
@@ -30,7 +28,9 @@ namespace lab4_cone
         }
 
         private void inputMenuItem_Click(object sender, EventArgs e)
-        {           
+        {
+            this.DialogBox = new DialogBox();
+            this.DialogBox.Cone = this.Cone; 
             this.DialogBox.Show();
         }
 
