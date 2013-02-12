@@ -46,7 +46,7 @@ namespace lab4_cone
             calcVolume = this.volumeCheckBox.Checked;
             calcMass = this.massCheckBox.Checked;
 
-            this.Close();
+            this.Hide();
         }        
     }
 }
