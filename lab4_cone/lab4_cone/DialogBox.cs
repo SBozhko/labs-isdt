@@ -22,14 +22,22 @@ namespace lab4_cone
 
         private void savePropertiesButton_Click(object sender, EventArgs e)
         {
-            Cone.Radius = Double.Parse(this.radiusTextBox.Text);
-            Cone.Height = Double.Parse(this.heightTextBox.Text);
-            Cone.Density = Double.Parse(this.densityTextBox.Text);
+            try
+            {
+                Cone.Radius = Double.Parse(this.radiusTextBox.Text);
+                Cone.Height = Double.Parse(this.heightTextBox.Text);
+                Cone.Density = Double.Parse(this.densityTextBox.Text);
 
-            CalcVolume = this.volumeCheckBox.Checked;
-            CalcMass = this.massCheckBox.Checked;
+                CalcVolume = this.volumeCheckBox.Checked;
+                CalcMass = this.massCheckBox.Checked;
 
-            this.Hide();
+                this.Hide();
+            } catch (Exception) 
+            {
+                MessageBox.Show("Please, input correct data");
+            }
+
+            
         }        
     }
 }
