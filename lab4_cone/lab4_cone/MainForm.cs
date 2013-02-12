@@ -12,11 +12,14 @@ namespace lab4_cone
     public partial class MainForm : Form
     {
         private Cone Cone { set; get; }
+        public DialogBox DialogBox { set; get; }        
 
         public MainForm()
         {
             InitializeComponent();
             Cone = new Cone();
+            DialogBox = new DialogBox();
+            DialogBox.Cone = this.Cone;
         }
         
         private void exitMenuItem_Click(object sender, EventArgs e)
@@ -25,15 +28,13 @@ namespace lab4_cone
         }
 
         private void inputMenuItem_Click(object sender, EventArgs e)
-        {
-            DialogBox dialogBox = new DialogBox();
-            dialogBox.Cone = this.Cone;
-            dialogBox.Show();
+        {           
+            DialogBox.Show();
         }
 
         private void workMenuItem_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

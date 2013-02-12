@@ -36,8 +36,9 @@
             this.radiusLabel = new System.Windows.Forms.Label();
             this.radiusTextBox = new System.Windows.Forms.TextBox();
             this.propertiesToCalcGroupBox = new System.Windows.Forms.GroupBox();
-            this.propertiesToCalculate = new System.Windows.Forms.CheckedListBox();
             this.savePropertiesButton = new System.Windows.Forms.Button();
+            this.volumeCheckBox = new System.Windows.Forms.CheckBox();
+            this.massCheckBox = new System.Windows.Forms.CheckBox();
             this.conePropertiesGroupBox.SuspendLayout();
             this.propertiesToCalcGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -107,56 +108,63 @@
             // 
             // propertiesToCalcGroupBox
             // 
-            this.propertiesToCalcGroupBox.Controls.Add(this.propertiesToCalculate);
+            this.propertiesToCalcGroupBox.Controls.Add(this.massCheckBox);
+            this.propertiesToCalcGroupBox.Controls.Add(this.volumeCheckBox);
             this.propertiesToCalcGroupBox.Location = new System.Drawing.Point(232, 12);
             this.propertiesToCalcGroupBox.Name = "propertiesToCalcGroupBox";
-            this.propertiesToCalcGroupBox.Size = new System.Drawing.Size(130, 69);
+            this.propertiesToCalcGroupBox.Size = new System.Drawing.Size(101, 82);
             this.propertiesToCalcGroupBox.TabIndex = 2;
             this.propertiesToCalcGroupBox.TabStop = false;
             this.propertiesToCalcGroupBox.Text = "Calculate:";
             // 
-            // propertiesToCalculate
-            // 
-            this.propertiesToCalculate.BackColor = System.Drawing.SystemColors.Control;
-            this.propertiesToCalculate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.propertiesToCalculate.CheckOnClick = true;
-            this.propertiesToCalculate.FormattingEnabled = true;
-            this.propertiesToCalculate.Items.AddRange(new object[] {
-            "Volume",
-            "Mass"});
-            this.propertiesToCalculate.Location = new System.Drawing.Point(15, 26);
-            this.propertiesToCalculate.Margin = new System.Windows.Forms.Padding(10);
-            this.propertiesToCalculate.Name = "propertiesToCalculate";
-            this.propertiesToCalculate.Size = new System.Drawing.Size(106, 30);
-            this.propertiesToCalculate.TabIndex = 0;
-            // 
             // savePropertiesButton
             // 
             this.savePropertiesButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.savePropertiesButton.Location = new System.Drawing.Point(232, 89);
+            this.savePropertiesButton.Location = new System.Drawing.Point(232, 100);
             this.savePropertiesButton.Name = "savePropertiesButton";
-            this.savePropertiesButton.Size = new System.Drawing.Size(128, 41);
+            this.savePropertiesButton.Size = new System.Drawing.Size(101, 30);
             this.savePropertiesButton.TabIndex = 3;
             this.savePropertiesButton.Text = "OK";
             this.savePropertiesButton.UseVisualStyleBackColor = true;
             this.savePropertiesButton.Click += new System.EventHandler(this.savePropertiesButton_Click);
+            // 
+            // volumeCheckBox
+            // 
+            this.volumeCheckBox.AutoSize = true;
+            this.volumeCheckBox.Location = new System.Drawing.Point(18, 26);
+            this.volumeCheckBox.Name = "volumeCheckBox";
+            this.volumeCheckBox.Size = new System.Drawing.Size(61, 17);
+            this.volumeCheckBox.TabIndex = 0;
+            this.volumeCheckBox.Text = "Volume";
+            this.volumeCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // massCheckBox
+            // 
+            this.massCheckBox.AutoSize = true;
+            this.massCheckBox.Location = new System.Drawing.Point(18, 56);
+            this.massCheckBox.Name = "massCheckBox";
+            this.massCheckBox.Size = new System.Drawing.Size(51, 17);
+            this.massCheckBox.TabIndex = 1;
+            this.massCheckBox.Text = "Mass";
+            this.massCheckBox.UseVisualStyleBackColor = true;
             // 
             // DialogBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(372, 142);
+            this.ClientSize = new System.Drawing.Size(345, 142);
             this.Controls.Add(this.savePropertiesButton);
             this.Controls.Add(this.propertiesToCalcGroupBox);
             this.Controls.Add(this.conePropertiesGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DialogBox";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "DialogBox";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Input cone\'s parameters";
             this.conePropertiesGroupBox.ResumeLayout(false);
             this.conePropertiesGroupBox.PerformLayout();
             this.propertiesToCalcGroupBox.ResumeLayout(false);
+            this.propertiesToCalcGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -165,7 +173,6 @@
 
         private System.Windows.Forms.GroupBox conePropertiesGroupBox;
         private System.Windows.Forms.GroupBox propertiesToCalcGroupBox;
-        private System.Windows.Forms.CheckedListBox propertiesToCalculate;
         private System.Windows.Forms.Label heightLabel;
         private System.Windows.Forms.Label radiusLabel;
         private System.Windows.Forms.TextBox radiusTextBox;
@@ -173,5 +180,7 @@
         private System.Windows.Forms.TextBox densityTextBox;
         private System.Windows.Forms.TextBox heightTextBox;
         private System.Windows.Forms.Button savePropertiesButton;
+        private System.Windows.Forms.CheckBox massCheckBox;
+        private System.Windows.Forms.CheckBox volumeCheckBox;
     }
 }
