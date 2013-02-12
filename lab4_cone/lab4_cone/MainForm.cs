@@ -11,15 +11,34 @@ namespace lab4_cone
 {
     public partial class MainForm : Form
     {
-        private Cone Cone { set; get; }
-        public DialogBox DialogBox { set; get; }        
+        private Cone cone;
+        public Cone Cone
+        {
+            set { this.cone = value; }
+            get { return this.cone; }
+        }
+
+        private DialogBox dialogBox;
+        public DialogBox DialogBox
+        {
+            set { this.dialogBox = value; }
+            get { return this.dialogBox; }
+        }
+
+        private ResultForm resultForm;
+        public ResultForm ResultForm
+        {
+            set { this.resultForm = value; }
+            get { return this.resultForm; }
+        }       
 
         public MainForm()
         {
             InitializeComponent();
-            Cone = new Cone();
-            DialogBox = new DialogBox();
-            DialogBox.Cone = this.Cone;
+            
+            cone = new Cone();
+            dialogBox = new DialogBox();            
+            dialogBox.Cone = this.Cone;            
         }
         
         private void exitMenuItem_Click(object sender, EventArgs e)
@@ -29,12 +48,17 @@ namespace lab4_cone
 
         private void inputMenuItem_Click(object sender, EventArgs e)
         {           
-            DialogBox.Show();
+            dialogBox.Show();
         }
 
         private void workMenuItem_Click(object sender, EventArgs e)
         {
-            
+            this.resultForm = new ResultForm();
+            this.resultForm.Cone = this.dialogBox.Cone;
+            this.resultForm.RenderMass = this.dialogBox.CalcMass;
+            this.resultForm.RenderVolume = this.dialogBox.CalcVolume;
+            this.resultForm.ShowResults();
+            this.resultForm.Show();
         }
     }
 }
