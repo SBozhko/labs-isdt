@@ -22,8 +22,8 @@ namespace lab4_cone
 
         public void ShowResults()
         {
-            this.massResLabel.Text = this.Cone.Mass.ToString();
-            this.volumeResLabel.Text = this.Cone.Volume.ToString();
+            this.massResLabel.Text = String.Format("{0:0,0.00}", this.Cone.Mass);
+            this.volumeResLabel.Text = String.Format("{0:0,0.00}", this.Cone.Volume);
 
             this.massLabel.Visible = this.RenderMass;
             this.massResLabel.Visible = this.RenderMass;
