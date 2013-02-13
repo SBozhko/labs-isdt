@@ -9,7 +9,10 @@ namespace lab1_trinagle
     {
         private const int VERTICES = 3;
         private readonly int DIMENTIONS = 2; // 2D triangle by default
-        public double[,] Coordinates { set; get; }
+        public double[,] Coordinates
+        {
+            set; get;
+        }
         public enum CLOCKWISE { TRUE, FALSE }
 
         public Triangle()
@@ -22,8 +25,6 @@ namespace lab1_trinagle
             DIMENTIONS = numberOfDimentions;
             Coordinates = new double[VERTICES, DIMENTIONS];
         }
-
-
 
         public void Move(double xOffset, double yOffset)
         {
@@ -61,6 +62,8 @@ namespace lab1_trinagle
 
         public override string ToString()
         {
+            checkTriangleSides(Coordinates);
+
             StringBuilder triangleInfo = new StringBuilder("Triangle's information: " + DIMENTIONS + "D\n");
             for (int i = 0; i < VERTICES; i++)
             {
@@ -78,5 +81,28 @@ namespace lab1_trinagle
             }
             return triangleInfo.ToString();
         }
+
+        private bool checkTriangleSides(double[,] coordinates) 
+        {
+            double side1, side2, side3;
+
+            side1 = Math.Sqrt(Math.Pow(coordinates[0, 0] - coordinates[1, 0], 2) + Math.Pow(coordinates[0, 1] - coordinates[1, 1], 2));
+            side2 = Math.Sqrt(Math.Pow(coordinates[1, 0] - coordinates[2, 0], 2) + Math.Pow(coordinates[1, 1] - coordinates[2, 1], 2));
+            side3 = Math.Sqrt(Math.Pow(coordinates[2, 0] - coordinates[0, 0], 2) + Math.Pow(coordinates[2, 1] - coordinates[0, 1], 2));
+
+            Console.WriteLine("side1: " + side1);
+            Console.WriteLine("side2: " + side2);
+            Console.WriteLine("side3: " + side3);
+
+            if (side1 > side2 + side3 || side2 > side1 + side3 || side3 > side1 + side2)
+            {
+                Console.WriteLine("checkTriangleSides: " + false);
+                return false;
+            }
+
+            Console.WriteLine("checkTriangleSides: " + true);
+
+            return true;   
+        }        
     }
 }
