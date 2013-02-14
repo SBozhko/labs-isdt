@@ -17,7 +17,7 @@ namespace lab4_cone
 
         public ResultForm()
         {
-            InitializeComponent();           
+            InitializeComponent();
         }
 
         public void ShowResults()
@@ -29,6 +29,6 @@ namespace lab4_cone
             this.massResLabel.Visible = this.RenderMass;
             this.volumeLabel.Visible = this.RenderVolume;
             this.volumeResLabel.Visible = this.RenderVolume;
-        }   
+        }
     }
 }
