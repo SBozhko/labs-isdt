@@ -9,6 +9,10 @@ namespace lab3_polynomial
     {
         static void Main(string[] args)
         {
+            Polynomial p = new Polynomial(4, new double[] {2, 1, 2, 5, 4});
+            Console.WriteLine(p.Calculate(1));
+            Console.WriteLine(p.Calculate(2));
+            Console.ReadKey();
         }
     }
 }
