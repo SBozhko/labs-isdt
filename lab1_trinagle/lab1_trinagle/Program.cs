@@ -14,9 +14,9 @@ namespace lab1_trinagle
             
 
             Console.WriteLine(triangle.ToString());
-            triangle.Resize(4, 4);
+            triangle.Resize(new double[] {4, 4});
             triangle.Rotate(60, Triangle.CLOCKWISE.TRUE);
-            triangle.Move(4, 3);
+            triangle.Move(new double[] {4, 3});
             Console.WriteLine(triangle.ToString());
 
             Console.ReadKey();

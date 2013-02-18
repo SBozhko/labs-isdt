@@ -7,31 +7,39 @@ namespace lab1_trinagle
 {
     class Triangle
     {
-        private const int VERTICES = 3;
-        private readonly int DIMENTIONS = 2; // 2D triangle by default
+        private const byte CORNERS = 3;
+        private readonly byte DIMENTIONS = (byte)DIMENTION._2D; // 2D triangle by default
         public double[,] Coordinates
         {
             set; get;
         }
-        public enum CLOCKWISE { TRUE, FALSE }
+        public enum CLOCKWISE { TRUE, FALSE };
+        public enum DIMENTION : byte { _2D = 2, _3D = 3 };
 
         public Triangle()
         {
-            Coordinates = new double[VERTICES, DIMENTIONS];
+            Coordinates = new double[CORNERS, DIMENTIONS];
         }
 
-        public Triangle(int numberOfDimentions)
+        public Triangle(DIMENTION dimention)
         {
-            DIMENTIONS = numberOfDimentions;
-            Coordinates = new double[VERTICES, DIMENTIONS];
+            DIMENTIONS = (byte)dimention;
+            Coordinates = new double[CORNERS, DIMENTIONS];
         }
 
-        public void Move(double xOffset, double yOffset)
+        public void Move(double[] coordinatesOffset )
         {
-            for (int i = 0; i < VERTICES; i++)
+            if (DIMENTIONS != coordinatesOffset.Length)
             {
-                Coordinates[i, 0] += xOffset;
-                Coordinates[i, 1] += yOffset;
+                throw new IllegalArgumentException("The number of dimensions should be equal the number of coordinates offsets");
+            }
+
+            for (int i = 0; i < CORNERS; i++)
+            {
+                for (int j = 0; j < DIMENTIONS; j++)
+                {
+                    Coordinates[i, j] += coordinatesOffset[j];
+                }
             }
         }
 
@@ -44,19 +52,26 @@ namespace lab1_trinagle
                 clockwiseIndex = -1;
             }
 
-            for (int i = 0; i < VERTICES; i++)
+            for (int i = 0; i < CORNERS; i++)
             {
                 Coordinates[i, 0] = Coordinates[i, 0] * Math.Cos(radians) + clockwiseIndex * Coordinates[i, 1] * Math.Sin(radians);
                 Coordinates[i, 1] = Coordinates[i, 1] * Math.Cos(radians) - clockwiseIndex * Coordinates[i, 0] * Math.Sin(radians);
             }
         }
 
-        public void Resize(double xMultiplier, double yMultiplier)
+        public void Resize(double[] coordinatesMultipliers)
         {
-            for (int i = 1; i < VERTICES; i++)
+            if (DIMENTIONS != coordinatesMultipliers.Length)
             {
-                Coordinates[i, 0] = Coordinates[i, 0] * xMultiplier;
-                Coordinates[i, 1] = Coordinates[i, 1] * yMultiplier;
+                throw new IllegalArgumentException("The number of dimensions should be equal the number of coordinates offsets");
+            }
+
+            for (int i = 1; i < CORNERS; i++)
+            {
+                for (int j = 0; j < DIMENTIONS; j++)
+                {
+                    Coordinates[i, 0] *= coordinatesMultipliers[j];                    
+                }
             }
         }
 
@@ -65,9 +80,9 @@ namespace lab1_trinagle
             checkTriangleSides(Coordinates);
 
             StringBuilder triangleInfo = new StringBuilder("Triangle's information: " + DIMENTIONS + "D\n");
-            for (int i = 0; i < VERTICES; i++)
+            for (int i = 0; i < CORNERS; i++)
             {
-                triangleInfo.Append("Coordinates of the vertex " + (i + 1) + ": (");
+                triangleInfo.Append("Coordinates of the corner " + (i + 1) + ": (");
                 for (int j = 0; j < DIMENTIONS; j++)
                 {
                     triangleInfo.Append(String.Format("{0:#,0.##}", Math.Round(Coordinates[i, j], 2)));

@@ -6,3 +6,4 @@ C:\labs\labs-isdt\lab1_trinagle\lab1_trinagle\obj\x86\Debug\lab1_trinagle.exe
 C:\labs\labs-isdt\lab1_trinagle\lab1_trinagle\obj\x86\Debug\lab1_trinagle.pdb
 C:\labs\labs-isdt\lab1_trinagle\lab1_trinagle\bin\Debug\lab1_trinagle.exe
 C:\labs\labs-isdt\lab1_trinagle\lab1_trinagle\bin\Debug\lab1_trinagle.pdb
+C:\labs\labs-isdt\lab1_trinagle\lab1_trinagle\obj\x86\Debug\lab1_trinagle.csprojResolveAssemblyReference.cache
