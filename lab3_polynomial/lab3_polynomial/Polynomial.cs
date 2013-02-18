@@ -18,7 +18,7 @@ namespace lab3_polynomial
         {
             if (degree + 1 != coefficients.Length)
             {
-                // TODO exception
+                throw new IndexOfBoundException();
             }
 
             this.degree = degree;
@@ -28,7 +28,11 @@ namespace lab3_polynomial
         public Polynomial(Polynomial polynomial)
         {
             this.degree = polynomial.degree;
-            this.Coefficients = polynomial.Coefficients;
+            this.Coefficients = new double[polynomial.Coefficients.Length];
+            for (int i = 0; i < polynomial.Coefficients.Length; i++)
+            {
+                this.Coefficients[i] = polynomial.Coefficients[i];
+            }
         }
 
         public double Calculate(double x)
@@ -48,80 +52,86 @@ namespace lab3_polynomial
         {
             if (index <= 0 || index > Coefficients.Length)
             {
-                // TODO exception
+                throw new IndexOfBoundException();
             }
             return Coefficients[index - 1];
         }
 
-        public static Polynomial operator *(Polynomial a, Polynomial b)
+        public static Polynomial operator *(Polynomial p1, Polynomial p2)
         {
-            int p1Degree = a.degree;
-            int p2Degree = b.degree;
-            int newDegree = p1Degree + p2Degree;
-            double[] coeffArray = new double[newDegree + 1];
+            int p1Degree = p1.degree;
+            int p2Degree = p2.degree;
+            int pesultDegree = p1Degree + p2Degree;
+            double[] resultCoeffs = new double[pesultDegree + 1];
 
-            for (int i = 0; i < a.Coefficients.Length; i++)
+            for (int i = 0; i < p1.Coefficients.Length; i++)
             {
-                for (int j = 0; j < b.Coefficients.Length; j++)
+                for (int j = 0; j < p2.Coefficients.Length; j++)
                 {
-                    coeffArray[newDegree - (p1Degree + p2Degree--)] += a.Coefficients[i] * b.Coefficients[j];
+                    resultCoeffs[pesultDegree - (p1Degree + p2Degree--)] += p1.Coefficients[i] * p2.Coefficients[j];
                 }
                 p1Degree--;
-                p2Degree = b.degree;
+                p2Degree = p2.degree;
             }
 
-            return new Polynomial(newDegree, coeffArray);
+            return new Polynomial(pesultDegree, resultCoeffs);
         }
 
-        public static Polynomial operator +(Polynomial a, Polynomial b)
+        public static Polynomial operator +(Polynomial p1, Polynomial p2)
         {
-            int p1Degree = a.degree;
-            int p2Degree = b.degree;
-            int newDegree = Math.Max(p1Degree, p2Degree);
-            double[] coeffArray = new double[newDegree + 1];
-            int j = coeffArray.Length - 1;
+            int p1Degree = p1.degree;
+            int p2Degree = p2.degree;
+            int pesultDegree = Math.Max(p1Degree, p2Degree);
+            double[] resultCoeffs = new double[pesultDegree + 1];
+            int j = resultCoeffs.Length - 1;
 
-            for (int i = a.degree; i >= 0; i--)
+            for (int i = p1.degree; i >= 0; i--)
             {
-                coeffArray[j--] += a.Coefficients[i];
+                resultCoeffs[j--] += p1.Coefficients[i];
             }
 
-            j = coeffArray.Length - 1;
-            for (int i = b.degree; i >= 0; i--)
+            j = resultCoeffs.Length - 1;
+            for (int i = p2.degree; i >= 0; i--)
             {
-                coeffArray[j--] += b.Coefficients[i];
+                resultCoeffs[j--] += p2.Coefficients[i];
             }
 
-            return new Polynomial(newDegree, coeffArray);
+            return new Polynomial(pesultDegree, resultCoeffs);
         }
 
-        public static Polynomial operator -(Polynomial a, Polynomial b)
+        public static Polynomial operator -(Polynomial p1, Polynomial p2)
         {
-            Polynomial p = new Polynomial(b);
+            Polynomial p2Negative = new Polynomial(p2);
 
-            for (int i = 0; i < p.Coefficients.Length; i++)
+            for (int i = 0; i < p2Negative.Coefficients.Length; i++)
             {
-                p.Coefficients[i] *= -1;
+                p2Negative.Coefficients[i] *= -1;
             }
-            
-            return a + p;
+
+            return p1 + p2Negative;
         }
 
         public string ToHumanString()
         {
-            StringBuilder sb = new StringBuilder(base.ToString() + "\n");
+            StringBuilder sb = new StringBuilder();
             int xDegree = this.degree;
+            string signStr = "";
+            string coeffStr = "";
+            string xDegreeStr = "";
+
             for (int i = 0; i < Coefficients.Length; i++)
             {
+                signStr = Coefficients[i] < 0 ? " - " : signStr = " + ";
+                signStr = i == 0 ? signStr.Substring(1, 2) : signStr;
+                signStr = (i == 0 && Coefficients[i] >= 0) ? "" : signStr;
 
-                string coeffStr = (Coefficients[i] != 1 && Coefficients[i] != 0) ? Coefficients[i].ToString() : "";
+                coeffStr = (Coefficients[i] != 1 && Coefficients[i] != 0) ? Math.Abs(Coefficients[i]).ToString() : "";
 
-                string xDegreeStr = (xDegree != 0 && xDegree != 1) ? "x^" + xDegree.ToString() : "";
+                xDegreeStr = (xDegree != 0 && xDegree != 1) ? "x^" + xDegree.ToString() : "";
                 xDegreeStr = (xDegree == 1) ? "x" : xDegreeStr;
                 xDegreeStr = (Coefficients[i] == 0) ? "" : xDegreeStr;
 
-                sb.Append(coeffStr + xDegreeStr);
-                sb.Append((i < Coefficients.Length - 1 && Coefficients[i] != 0) ? " + " : "");
+                sb.Append(signStr + coeffStr + xDegreeStr);
                 xDegree--;
             }
 
@@ -135,7 +145,7 @@ namespace lab3_polynomial
             for (int i = 0; i < Coefficients.Length; i++)
             {
                 sb.Append(Coefficients[i] >= 0 ? " + " : " - ");
-                sb.Append((Coefficients[i] >= 0) ? Coefficients[i].ToString() : (-1 * Coefficients[i]).ToString() + "x^" + xDegree--);                
+                sb.Append(Math.Abs(Coefficients[i]) + "x^" + xDegree--);
             }
 
             return sb.ToString();
