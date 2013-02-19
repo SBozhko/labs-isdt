@@ -7,11 +7,11 @@ namespace lab2_array
 {
     class IllegalArgumentException : Exception
     {
-        private string p;
+        public string Summary{set; get;}
 
-        public IllegalArgumentException(string p)
+        public IllegalArgumentException(string summary)
         {
-            this.p = p;
+            Summary = summary;
         }
     }
 }
