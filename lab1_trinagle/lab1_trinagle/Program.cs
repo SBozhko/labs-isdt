@@ -9,15 +9,26 @@ namespace lab1_trinagle
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Creation of new triangle...");
             Triangle triangle = new Triangle();
-            triangle.Coordinates = new double[,] {{1, 1}, {4666.4565, 256545.5456}, {0, 5}};
-            
+            triangle.Coordinates = new double[,] {{1, 1}, {1, 5}, {4, 1}};
+            Console.WriteLine(triangle);
 
-            Console.WriteLine(triangle.ToString());
-            triangle.Resize(new double[] {4, 4});
-            triangle.Rotate(60, Triangle.CLOCKWISE.TRUE);
-            triangle.Move(new double[] {4, 3});
-            Console.WriteLine(triangle.ToString());
+            Console.WriteLine("Resizing... x *= 4; y *= 4");
+            triangle.Resize(4, 4);
+            Console.WriteLine(triangle);
+
+            int degrees = 60;
+            Triangle.Clockwise clockwise = Triangle.Clockwise.TRUE;
+            Console.WriteLine("Rotating... clockwise = " + clockwise + "; degrees = " + degrees);
+            triangle.Rotate(60, Triangle.Clockwise.TRUE);
+            Console.WriteLine(triangle);
+
+            int xOffset = 4;
+            int yOffset = 3;
+            Console.WriteLine("Moving..." + "xOffset = " + xOffset + "; yOffset = " + yOffset);
+            triangle.Move(xOffset, yOffset);
+            Console.WriteLine(triangle);
 
             Console.ReadKey();
         }
