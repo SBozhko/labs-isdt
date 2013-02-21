@@ -10,7 +10,7 @@ namespace lab2_array
         static void Main(string[] args)
         {
             Console.WriteLine("Creation new array...");
-            Array array = new Array(new int[] { 4, 5, -6});
+            Array array = new Array(new int[] { 4, 5, -6, 0, 6, 1, 0, 6, 7, 0, 4});
             Console.WriteLine("Array: " + array);
             Console.WriteLine("Production of array items with even indexes: " + array.GetEvenIndexItemsProduction());
             try
