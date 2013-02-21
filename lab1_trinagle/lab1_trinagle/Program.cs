@@ -11,7 +11,7 @@ namespace lab1_trinagle
         {
             Console.WriteLine("Creation of new triangle...");
             Triangle triangle = new Triangle();
-            triangle.Coordinates = new double[,] {{1, 1}, {1, 5}, {4, 1}};
+            triangle.Coordinates = new double[,] { { 1, 1 }, { 1, 5 }, { 4, 1 } };
             Console.WriteLine(triangle);
 
             Console.WriteLine("Resizing... x *= 4; y *= 4");

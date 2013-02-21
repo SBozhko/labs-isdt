@@ -9,7 +9,7 @@ namespace lab1_trinagle
     {
         private const byte CORNERS = 3;
         private readonly byte DIMENTIONS = (byte)Dimention._2D; // 2D triangle by default
-        public double[,] Coordinates {set; get;}
+        public double[,] Coordinates { set; get; }
         public enum Clockwise { TRUE, FALSE };
         public enum Dimention : byte { _2D = 2, _3D = 3 };
 
